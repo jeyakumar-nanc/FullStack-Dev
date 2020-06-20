@@ -1,0 +1,85 @@
+<div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <form  [formGroup]="taskForm" >  
+                        <div class="form-group row"></div>                    
+                        <div class="form-group row">
+                            <div class="col-md-4 font-weight-bold"><label for="project">Project</label></div>                           
+                            <div class="col-md-4">
+                               <select  class="form-control"  formControlName="ProjectId" (change)="FillProj($event.target.value);">                                                                      
+                                    <option *ngFor="let proj of projList" value={{proj.ProjectId}}>  
+                                        {{proj.ProjectName}}  
+                                    </option>  
+                              </select>
+                            <div *ngIf="submitted && form.ProjectId.errors" class="error">
+                                <div *ngIf="form.ProjectId.errors.required" class="text-danger">Project Name is required</div>
+                            </div>
+                            </div>                            
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 font-weight-bold"><label for="task">Task</label></div>
+                            <div class="col-md-4">
+                                <input type="text" formControlName="TaskName" class="form-control">
+                            <div *ngIf="submitted && form.TaskName.errors" class="error">
+                                <div *ngIf="form.TaskName.errors.required" class="text-danger">Task Name is required</div>
+                            </div>
+                            <div>
+                                <label for="parenttask"><input type="checkbox">&nbsp;Parent Task</label>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 font-weight-bold"><label for="priority">Priority</label></div>
+                            <div class="col-md-4">
+                                <input type="range" class="custom-range" min="0" max="30" step="1" formControlName="Priority">
+                                <div *ngIf="submitted && form.Priority.errors" class="error">
+                                    <div *ngIf="form.Priority.errors.required" class="text-danger">Please change the Priority bar</div>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 font-weight-bold"><label for="parenttask">Parent Task</label></div>                            
+                            <div class="col-md-4">                               
+                                <select  class="form-control"  formControlName="ParentId" (change)="FillParenTask($event.target.value);">                                  
+                                    <option *ngFor="let pTask of parentTaskList" value={{pTask.ParentId}}>  
+                                        {{pTask.ParentTask}}  
+                                    </option>  
+                              </select>
+                              <div *ngIf="submitted && form.ParentId.errors" class="error">
+                                <div *ngIf="form.ParentId.errors.required" class="text-danger">Parent Task is required</div>
+                            </div>
+                            </div>                         
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-3 font-weight-bold"><label for="startDate">Start Date</label></div>
+                            <div class="col-md-3"><input type="text" formControlName="StartDate" class="form-control"></div>
+                            <div class="col-md-3 font-weight-bold"><label for="endDate">End Date</label></div>
+                            <div class="col-md-3"><input type="text" formControlName="EndDate" class="form-control"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4 font-weight-bold"><label for="user">User</label></div>
+                            <div class="col-md-4">                             
+                                <select  class="form-control"  formControlName="UserId" (change)="FillUser($event.target.value);">                                  
+                                    <option *ngFor="let user of userList" value={{user.UserId}}>  
+                                        {{user.FirstName}}  
+                                    </option>  
+                              </select>
+                                <div *ngIf="submitted && form.UserId.errors" class="error">
+                                    <div *ngIf="form.UserId.errors.required" class="text-danger">User is required</div>
+                                </div>
+                            </div>                           
+                        </div>
+                        <div class="form-group row">
+                            <button class="btn btn-primary pull-right" (click)="onAdd()">Add</button>&nbsp;&nbsp;
+                            <button class="btn btn-secondary pull-right" (click)="onCancel()">Cancel</button> &nbsp;&nbsp;                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    
+    

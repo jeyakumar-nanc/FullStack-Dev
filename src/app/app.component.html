@@ -1,0 +1,58 @@
+<html>
+    <head>  
+        <meta charset="utf-8" /> 
+        <title>Project Manager</title> 
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head> 
+    <body>
+      <div>
+        <nav class="navbar navbar-expand-md navbar-light bg-light shadow fixed-top" >
+          <div class="container">
+            <a class="navbar-brand" href="#">Project Manager</a>
+            <button class="navbar-toggle" type="button" 
+            data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" 
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="navbar-nav ml-auto pull-right">     
+                <li class="nav-item"
+                role="presentation"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                  <a class="nav-link" [routerLink]="['/app-add-project']">Add Project</a>
+                </li> 
+                <li class="nav-item"
+                role="presentation"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                  <a class="nav-link" [routerLink]="['/app-add-task']">Add Task</a>
+                </li>  
+                <li class="nav-item"
+                role="presentation"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                  <a class="nav-link" [routerLink]="['/add-user']">Add User</a>
+                </li>
+                <li class="nav-item"
+                role="presentation"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+                  <a class="nav-link" [routerLink]="['/app-task']">View Task</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+                  
+    <router-outlet> </router-outlet>
+         
+    </body>
+</html>
+
+

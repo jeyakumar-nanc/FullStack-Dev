@@ -1,0 +1,85 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form [formGroup]="taskForm" >                                       
+                    <div class="form-group row">
+                        <div class="col-md-4"><label for="project">Project</label></div>
+                        <div class="col-md-4">
+                            <input type="text" 
+                            class="form-control" formControlName="ProjectName" 
+                            readonly>
+                        <!-- <div *ngIf="submitted && form.ProjectName.errors" class="error">
+                            <div *ngIf="form.ProjectName.errors.required" class="text-danger">Project Name is required</div>
+                        </div> -->
+                        </div>                        
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4"><label for="task">Task</label></div>
+                        <div class="col-md-4">
+                            <input type="text"                            
+                            formControlName="TaskName" 
+                            class="form-control">
+                        <div *ngIf="submitted && form.TaskName.errors" class="error">
+                            <div *ngIf="form.TaskName.errors.required" class="text-danger">Task Name is required</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4"><label for="priority">Priority</label></div>
+                        <div class="col-md-4">
+                            <input type="range" class="custom-range" min="0" max="30" step="0.5"                             
+                            formControlName="Priority">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-4"><label for="parenttask">Parent Task</label></div>
+                        <div class="col-md-4">
+                            <input type="text"                            
+                            class="form-control" formControlName="ParentTask" readonly>                            
+                        </div>                        
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-3"><label for="startDate">Start Date</label></div>
+                        <div class="col-md-3">
+                            <input type="text"                             
+                            formControlName="StartDate" 
+                            class="form-control">
+                            <div *ngIf="submitted && form.StartDate.errors" class="error">
+                                <div *ngIf="form.StartDate.errors.required" class="text-danger">Start Date is required</div>
+                            </div>
+                        </div>                        
+                        <div class="col-md-3"><label for="endDate">End Date</label></div>
+                        <div class="col-md-3">
+                            <input type="text"                             
+                            formControlName="EndDate" 
+                            class="form-control">
+                            <div *ngIf="submitted && form.EndDate.errors" class="error">
+                                <div *ngIf="form.EndDate.errors.required" class="text-danger">End Date is required</div>
+                            </div>                            
+                        </div>
+                        </div>     
+                    <div class="form-group row">
+                        <div class="col-md-4"><label for="user">User</label></div>
+                        <div class="col-md-4">
+                            <input type="text"                            
+                            formControlName="User" 
+                            class="form-control" readonly>
+                        <!-- <div *ngIf="submitted && form.ProjectName.errors" class="error">
+                            <div *ngIf="form.ProjectName.errors.required" class="text-danger">Project Name is required</div>
+                        </div> -->
+                        </div>                        
+                    </div>               
+                    <div class="form-group row">
+                        <button class="btn btn-primary pull-right" (click)="onUpdate()">Update</button>&nbsp;&nbsp;
+                        <button class="btn btn-secondary pull-right" (click)="onCancel()">Cancel</button> &nbsp;&nbsp;                            
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

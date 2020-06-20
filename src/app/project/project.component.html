@@ -1,0 +1,40 @@
+<div class="Container" >
+    <div class="form-group row">
+        <table>
+            <tr>
+                <td>
+                    <label for="lblSort" class="font-weight-bold">Sort by:</label>
+                </td>
+                <td>
+                    <button class="btn btn-secondary pull-right" (click)="onSort($event.target.value)" value="StartDate">StartDate</button>
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <button class="btn btn-secondary pull-right" (click)="onSort($event.target.value)" value="EndDate">EndDate</button>
+                    &nbsp;&nbsp;
+                </td>
+                <td>
+                    <button class="btn btn-secondary pull-right" (click)="onSort($event.target.value)" value="Priority">Priority</button>
+                    &nbsp;&nbsp;
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div *ngFor= "let proj of projList">         
+    <ul class="list-group">        
+            <li class="list-group-item list-group-item-heading font-weight-bold">{{proj.ProjectName}}
+                <span class="pull-right">
+                    <button class="btn btn-primary" (click)="onEdit(proj)">Edit</button>&nbsp;&nbsp;
+                    <button class="btn btn-secondary" (click)="Cancel()">Suspend</button>                                           
+                </span>
+            </li>                       
+            <li class="list-group-item">Priority<span class="badge">{{proj.Priority}}</span></li>
+            <li class="list-group-item">Start Date<span class="badge">{{proj.StartDate | date:"MM/dd/yy" }}</span></li>
+            <li class="list-group-item">End Date<span class="badge">{{proj.EndDate | date:"MM/dd/yy"}}</span></li>
+            <hr>                      
+    </ul>    
+    </div>
+</div>
+
+    
+    

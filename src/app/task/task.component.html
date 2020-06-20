@@ -1,0 +1,50 @@
+<div class="jumbotron">
+<div class="container">
+    <div class="row">
+        <div class="col-lg">
+            <div class="list-group">
+                <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Parent Task</th>
+                    <th>Priority</th>
+                    <th>Start Date</th>          
+                    <th>End Date</th>          
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor= "let task of taskList">
+                    <td>
+                        {{task.TaskName}}
+                    </td>
+                    <td>
+                        {{task.ParentTask}}
+                    </td>
+                    <td>
+                        {{task.Priority}}
+                    </td>
+                    <td>
+                        {{task.StartDate | date:"MM/dd/yy"}}
+                    </td>
+                    <td>
+                        {{task.EndDate | date:"MM/dd/yy"}}
+                    </td>
+                    <td>
+                        <div class="clearfix">
+                            <button class="btn btn-primary" (click)="editTask(task.TaskId)">Edit</button>                         
+                        </div>                    
+                    </td>
+                    <td>
+                        <div class="clearfix">                           
+                            <button  class="btn btn-secondary" (click)="endTask(task)">End Task</button>
+                        </div>                    
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

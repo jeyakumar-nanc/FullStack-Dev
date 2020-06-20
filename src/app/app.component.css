@@ -1,0 +1,14 @@
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0px; 
+    border: 1px solid transparent;
+}
+
+.navbar-nav { 
+    margin-left: auto; 
+} 
+
+.jumbotron {
+    padding-top: 20px;
+}
