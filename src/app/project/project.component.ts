@@ -41,4 +41,8 @@ export class ProjectComponent implements OnInit {
     this.projList.reverse();
   }
 
+  onCancel(){
+    
+  }
+
 }
