@@ -8,9 +8,12 @@
                             <div class="col-md-4 font-weight-bold"><label for="project">Project</label></div>                           
                             <div class="col-md-4">
                                <select  class="form-control"  formControlName="ProjectId" (change)="FillProj($event.target.value);">                                                                      
-                                    <option *ngFor="let proj of projList" value={{proj.ProjectId}}>  
+                                <option value="0">
+                                    --- Select---
+                                </option>    
+                                <option *ngFor="let proj of projList" value={{proj.ProjectId}}>  
                                         {{proj.ProjectName}}  
-                                    </option>  
+                                </option>  
                               </select>
                             <div *ngIf="submitted && form.ProjectId.errors" class="error">
                                 <div *ngIf="form.ProjectId.errors.required" class="text-danger">Project Name is required</div>
@@ -25,7 +28,7 @@
                                 <div *ngIf="form.TaskName.errors.required" class="text-danger">Task Name is required</div>
                             </div>
                             <div>
-                                <label for="parenttask"><input type="checkbox">&nbsp;Parent Task</label>
+                                <label for="parenttask"><input type="checkbox" (change)="onCheckboxChange($event)" [(ngModel)] = "checked" [ngModelOptions]="{standalone: true}">&nbsp;Parent Task</label>
                             </div>
                             </div>
                         </div>
@@ -42,6 +45,9 @@
                             <div class="col-md-4 font-weight-bold"><label for="parenttask">Parent Task</label></div>                            
                             <div class="col-md-4">                               
                                 <select  class="form-control"  formControlName="ParentId" (change)="FillParenTask($event.target.value);">                                  
+                                    <option value="0">
+                                        --- Select---
+                                    </option> 
                                     <option *ngFor="let pTask of parentTaskList" value={{pTask.ParentId}}>  
                                         {{pTask.ParentTask}}  
                                     </option>  
@@ -61,12 +67,15 @@
                             <div class="col-md-4 font-weight-bold"><label for="user">User</label></div>
                             <div class="col-md-4">                             
                                 <select  class="form-control"  formControlName="UserId" (change)="FillUser($event.target.value);">                                  
+                                    <option value="0">
+                                        --- Select---
+                                    </option> 
                                     <option *ngFor="let user of userList" value={{user.UserId}}>  
                                         {{user.FirstName}}  
                                     </option>  
                               </select>
-                                <div *ngIf="submitted && form.UserId.errors" class="error">
-                                    <div *ngIf="form.UserId.errors.required" class="text-danger">User is required</div>
+                                <div *ngIf="submitted && form.UserId.invalid" class="error">
+                                    <div *ngIf="form.UserId.invalid" class="text-danger">User is required</div>
                                 </div>
                             </div>                           
                         </div>

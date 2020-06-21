@@ -3,6 +3,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Task } from '../shared/task.model';
+import { ParentTask } from '../shared/parenttask.model';
 
 
 @Injectable()
@@ -51,6 +52,12 @@ export class TaskService{
     addTask(task:Task):Observable<any>{
         return this.http
             .post(this.restUrl+"Add",task,this.generateHeaders())
+            .pipe(map((res:Response)=>res));
+    }
+
+    addParentTask(task:ParentTask):Observable<any>{
+        return this.http
+            .post(this.restUrl+"AddT",task,this.generateHeaders())
             .pipe(map((res:Response)=>res));
     }
 

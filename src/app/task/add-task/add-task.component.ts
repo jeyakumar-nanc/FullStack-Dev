@@ -20,11 +20,13 @@ export class AddTaskComponent implements OnInit {
 
   public taskForm : any;
   public submitted: boolean = false;
+  checked:true;
 
   projList : Project[];
   userList : User[];
   parentTaskList :ParentTask[];
   taskDataSubmitted: Task;
+  parentTask : ParentTask;
 
   constructor(private formBuilder:FormBuilder, 
     private taskService:TaskService, 
@@ -38,13 +40,13 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
 
     this.taskForm = this.formBuilder.group({
-      ProjectId : [0],
+      ProjectId : [0,Validators.required],
       TaskName:['',Validators.required],
-      ParentId:[0],
+      ParentId:[0,Validators.required],
       Priority:[0, Validators.required],
       StartDate:[new Date(),Validators.required],
       EndDate:[new Date(),Validators.required],
-      UserId:[0]
+      UserId:[0,Validators.required]
     });
 
     this.projService.getProjectList().subscribe(res=>this.projList=res);
@@ -82,11 +84,18 @@ export class AddTaskComponent implements OnInit {
 
     this.submitted = true;    
 
+    var usrId = this.taskForm.get('UserId').value;
+    console.log(usrId);
     if(this.taskForm.invalid){
       return;
     }
 
-    this.taskService.addTask(this.taskForm.value)
+    console.log(this.checked);
+    if(this.checked){
+      
+     // this.parentTask.ParentTask = this.taskForm.get('TaskName').value;
+
+      this.taskService.addParentTask(this.taskForm.value)
       .pipe(first())
       .subscribe(
         data=>{
@@ -97,6 +106,22 @@ export class AddTaskComponent implements OnInit {
           alert(error.message);
         }        
       );
+
+    }
+    else{
+      this.taskService.addTask(this.taskForm.value)
+      .pipe(first())
+      .subscribe(
+        data=>{
+          alert("successfully added");
+          this.router.navigate(['app-task']);
+        },
+        (error:HttpErrorResponse)=>{        
+          alert(error.message);
+        }        
+      );
+    }
+    
     }
 
     onCancel(){
@@ -112,6 +137,39 @@ export class AddTaskComponent implements OnInit {
       });
 
      this.router.navigate(['app-add-task']);      
+    }
+
+    onCheckboxChange(e){
+    
+      if(e.target.checked){
+        this.taskForm.get('StartDate').disable();                     
+        this.taskForm.get('EndDate').disable(); 
+        this.taskForm.get('Priority').disable(); 
+        this.taskForm.get('ParentId').disable(); 
+        this.taskForm.get('UserId').disable(); 
+        this.taskForm.get('ProjectId').disable(); 
+        
+      }
+      else{
+        this.taskForm.get('StartDate').enable();          
+        this.taskForm.get('StartDate').setValidators(Validators.required);
+        this.taskForm.get('StartDate').updateValueAndValidity();
+        this.taskForm.get('EndDate').enable(); 
+        this.taskForm.get('EndDate').setValidators(Validators.required);
+        this.taskForm.get('EndDate').updateValueAndValidity();
+        this.taskForm.get('Priority').enable();  
+        this.taskForm.get('Priority').setValidators(Validators.required);
+        this.taskForm.get('Priority').updateValueAndValidity();
+        this.taskForm.get('ParentId').enable();  
+        this.taskForm.get('ParentId').setValidators(Validators.required);
+        this.taskForm.get('ParentId').updateValueAndValidity();
+        this.taskForm.get('UserId').enable();  
+        this.taskForm.get('UserId').setValidators(Validators.required);
+        this.taskForm.get('UserId').updateValueAndValidity();
+        this.taskForm.get('ProjectId').enable();  
+        this.taskForm.get('ProjectId').setValidators(Validators.required);
+        this.taskForm.get('ProjectId').updateValueAndValidity();
+      }
     }
 
   

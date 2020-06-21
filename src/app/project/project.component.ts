@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from './project.service';
 import { Router } from '@angular/router';
 import { Project } from '../shared/project.model';
-import { error } from 'protractor';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -42,7 +41,7 @@ export class ProjectComponent implements OnInit {
   }
 
   onCancel(){
-    
+
   }
 
 }
