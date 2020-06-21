@@ -39,6 +39,7 @@ export class ProjectComponent implements OnInit {
   onSort(sortValue){    
     this.projList.reverse();
   }
+    
 
   onCancel(){
 
