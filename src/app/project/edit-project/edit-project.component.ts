@@ -5,6 +5,7 @@ import { Project } from 'src/app/shared/project.model';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { first } from 'rxjs/internal/operators/first';
 import { HttpErrorResponse } from '@angular/common/http';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-edit-project',
@@ -61,8 +62,8 @@ export class EditProjectComponent implements AfterContentInit {
       {
         ProjectName : projSelected.ProjectName,       
         Priority:projSelected.Priority,
-        StartDate:projSelected.StartDate,
-        EndDate:projSelected.EndDate,
+        StartDate:formatDate(projSelected.StartDate,'M/d/yy', 'en-US'),
+        EndDate:formatDate(projSelected.EndDate,'M/d/yy', 'en-US'),
         ProjectId:projSelected.ProjectId
       }
     );

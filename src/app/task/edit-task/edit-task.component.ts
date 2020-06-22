@@ -5,6 +5,7 @@ import { Task } from 'src/app/shared/task.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/internal/operators/first';
 import { HttpErrorResponse } from '@angular/common/http';
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -59,8 +60,8 @@ export class EditTaskComponent implements AfterContentInit {
       TaskName:taskVal.TaskName,
       ParentTask:taskVal.ParentTask,
       Priority:taskVal.Priority,
-      StartDate:taskVal.StartDate,
-      EndDate:taskVal.EndDate,
+      StartDate:formatDate(taskVal.StartDate,'M/d/yy', 'en-US'),
+      EndDate:formatDate(taskVal.EndDate,'M/d/yy', 'en-US'),
       User:taskVal.User,
       TaskId:taskVal.TaskId,
       ProjectId:taskVal.ProjectId,

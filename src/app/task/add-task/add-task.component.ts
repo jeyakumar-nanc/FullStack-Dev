@@ -10,6 +10,7 @@ import { first } from 'rxjs/internal/operators/first';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Task } from 'src/app/shared/task.model';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-add-task',
@@ -44,8 +45,8 @@ export class AddTaskComponent implements OnInit {
       TaskName:['',Validators.required],
       ParentId:[0,Validators.required],
       Priority:[0, Validators.required],
-      StartDate:[new Date(),Validators.required],
-      EndDate:[new Date(),Validators.required],
+      StartDate:[formatDate(new Date(),'M/d/yy', 'en-US'),Validators.required],
+      EndDate:[formatDate(new Date(),'M/d/yy', 'en-US'),Validators.required],
       UserId:[0,Validators.required]
     });
 
@@ -84,16 +85,11 @@ export class AddTaskComponent implements OnInit {
 
     this.submitted = true;    
 
-    var usrId = this.taskForm.get('UserId').value;
-    console.log(usrId);
     if(this.taskForm.invalid){
       return;
     }
-
-    console.log(this.checked);
-    if(this.checked){
-      
-     // this.parentTask.ParentTask = this.taskForm.get('TaskName').value;
+    
+    if(this.checked){          
 
       this.taskService.addParentTask(this.taskForm.value)
       .pipe(first())
