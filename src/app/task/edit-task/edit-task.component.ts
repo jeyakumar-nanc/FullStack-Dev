@@ -93,7 +93,7 @@ export class EditTaskComponent implements AfterContentInit {
     if(this.taskForm.invalid){
       return;
     }
-
+  
     this.taskService.updateTask(this.taskForm.value)
       .pipe(first())
       .subscribe(data=>{
