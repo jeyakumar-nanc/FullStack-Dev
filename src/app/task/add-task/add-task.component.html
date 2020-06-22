@@ -35,7 +35,7 @@
                         <div class="form-group row">
                             <div class="col-md-4 font-weight-bold"><label for="priority">Priority</label></div>
                             <div class="col-md-4">
-                                <input type="range" class="custom-range" min="0" max="30" step="1" formControlName="Priority">
+                                <input type="range" class="custom-range" min="1" max="30" step="1" formControlName="Priority">
                                 <div *ngIf="submitted && form.Priority.errors" class="error">
                                     <div *ngIf="form.Priority.errors.required" class="text-danger">Please change the Priority bar</div>
                                 </div>

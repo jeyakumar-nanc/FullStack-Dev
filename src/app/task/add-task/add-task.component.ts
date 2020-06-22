@@ -44,7 +44,7 @@ export class AddTaskComponent implements OnInit {
       ProjectId : [0,Validators.required],
       TaskName:['',Validators.required],
       ParentId:[0,Validators.required],
-      Priority:[0, Validators.required],
+      Priority:['', Validators.required],
       StartDate:[formatDate(new Date(),'M/d/yy', 'en-US'),Validators.required],
       EndDate:[formatDate(new Date(),'M/d/yy', 'en-US'),Validators.required],
       UserId:[0,Validators.required]
@@ -127,8 +127,8 @@ export class AddTaskComponent implements OnInit {
         TaskName:'',
         ParentTask:'',
         Priority:0,
-        StartDate:new Date(),
-        EndDate:new Date(),
+        StartDate:formatDate(new Date(),'M/d/yy', 'en-US'),
+        EndDate:formatDate(new Date(),'M/d/yy', 'en-US'),
         User:''
       });
 
