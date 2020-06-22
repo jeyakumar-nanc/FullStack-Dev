@@ -40,6 +40,12 @@ export class ProjectService{
             .pipe(map((res:Response)=>res));
     }
 
+    suspendProj(item: Project):Observable<any>{
+        return this.http
+            .put(this.restUrl+"Suspend",item,this.generateHeaders())
+            .pipe(map((res:Response)=>res));
+    }
+
     private generateHeaders = () => {
         return {
           headers: new HttpHeaders({'Content-Type': 'application/json'})

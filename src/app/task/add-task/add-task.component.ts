@@ -21,7 +21,7 @@ export class AddTaskComponent implements OnInit {
 
   public taskForm : any;
   public submitted: boolean = false;
-  checked:true;
+  checked:boolean = false;
 
   projList : Project[];
   userList : User[];

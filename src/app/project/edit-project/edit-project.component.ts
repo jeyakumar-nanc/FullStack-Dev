@@ -22,7 +22,8 @@ export class EditProjectComponent implements AfterContentInit {
     ProjectName : new FormControl(['',Validators.required]),    
     Priority:new FormControl([0, Validators.min(1)]),
     StartDate:new FormControl(['',Validators.required]),
-    EndDate:new FormControl(['',Validators.required])
+    EndDate:new FormControl(['',Validators.required]),
+    Status: new FormControl([''])
   });
   
   constructor(
@@ -50,7 +51,8 @@ export class EditProjectComponent implements AfterContentInit {
       Priority:[0, Validators.min(1)],
       StartDate:['',Validators.required],
       EndDate:['',Validators.required],
-      ProjectId:[0]
+      ProjectId:[0],
+      Status:['Not Started']
     });
   }
 
@@ -64,7 +66,8 @@ export class EditProjectComponent implements AfterContentInit {
         Priority:projSelected.Priority,
         StartDate:formatDate(projSelected.StartDate,'M/d/yy', 'en-US'),
         EndDate:formatDate(projSelected.EndDate,'M/d/yy', 'en-US'),
-        ProjectId:projSelected.ProjectId
+        ProjectId:projSelected.ProjectId,
+        Status: projSelected.Status     
       }
     );
     

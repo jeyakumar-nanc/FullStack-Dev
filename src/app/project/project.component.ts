@@ -3,6 +3,7 @@ import { ProjectService } from './project.service';
 import { Router } from '@angular/router';
 import { Project } from '../shared/project.model';
 import { HttpErrorResponse } from '@angular/common/http';
+import { first } from 'rxjs/internal/operators/first';
 
 @Component({
   selector: 'app-project',
@@ -41,8 +42,18 @@ export class ProjectComponent implements OnInit {
   }
     
 
-  onCancel(){
-
+  onSuspend(proj){
+    //update the proj status to suspended
+    this.projService.suspendProj(proj)
+    .pipe(first())
+    .subscribe(data=>{
+      alert('Successfully updated!');
+        //this.router.navigate(['app-task']);
+      },
+      error=>{
+        alert('Submission Failed');
+      }
+    );
   }
 
 }

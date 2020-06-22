@@ -4,7 +4,8 @@ export class Project{
         public ProjectName:string,
         public StartDate:Date,
         public EndDate:Date,
-        public Priority:number
+        public Priority:number,
+        public Status:string
     ){
 
     }
